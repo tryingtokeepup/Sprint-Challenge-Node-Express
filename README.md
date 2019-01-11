@@ -24,23 +24,23 @@ In this challenge, create a web API around the following resources: `Projects` a
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Mention two parts of Express that you learned about this week.
+- [*] Mention two parts of Express that you learned about this week.
 
 We learned about Middleware and Routers this weeek, both of which were implemented in our projects for the week. The most interesting middleware (imo) was helmet; it seemed like such a small function, but it seems to do a world of good for your app security. Routers was a little less straightfoward for me; it seemed like more of a convinience system to help clean up code clutter.
 
-- [ ] Describe Middleware?
+- [*] Describe Middleware?
 
 Middleware, like mentioned above, are simply functions that get request and response objects (the homies lol) and operate on them. They then simply return the response object or keep going to the next middleware (with next()). Express' middleware stack seems to be basically comprised of an array of functions. Keeps it simple in my head.
 
-- [ ] Describe a Resource?
+- [*] Describe a Resource?
 
 A resource is the data that lives in the server we are trying to access, and we use endpoints to use CRUD methods on said resource. It's basically the data we want and need to access with our app, and we do this through our API.
 
-- [ ] What can the API return to help clients know if a request was successful?
+- [*] What can the API return to help clients know if a request was successful?
 
 We can send a 200 Ok status code to communicate to our client that everything was ... a'OK. LOL. All good here, chief!
 
-- [ ] How can we partition our application into sub-applications?
+- [*] How can we partition our application into sub-applications?
 
 We can use an Express Router, which behaves as a mini Express applicaiton with its own Routing and Middleware (almost like components in React).
 
@@ -79,9 +79,9 @@ The `projectModel.js` helper includes an extra method called `getProjectActions(
 
 ## Minimum Viable Product
 
-- [ ] Take the steps necessary to create a `package.json` to keep a record of all dependencies.
-- [ ] Use _yarn_ to add **knex** and **sqlite3** as dependencies to the project. **This is required for database access**.
-- [ ] Configure an _npm script_ named _"start"_ that will execute your code using _nodemon_ so that the **server restarts on changes**. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
+- [*] Take the steps necessary to create a `package.json` to keep a record of all dependencies.
+- [*] Use _yarn_ to add **knex** and **sqlite3** as dependencies to the project. **This is required for database access**.
+- [*] Configure an _npm script_ named _"start"_ that will execute your code using _nodemon_ so that the **server restarts on changes**. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
 
 Design and build the necessary endpoints to:
 
