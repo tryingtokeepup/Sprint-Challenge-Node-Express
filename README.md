@@ -120,5 +120,5 @@ Now that we have a way to add, update, remove and retrieve data from the provide
 
 - Extra Stretch for Reactoring:
 
-- [] Reactor using _async/await_ and _try/catch_.
-- [] Use Express Routes to make mini-express apps to clean up code. Specifically, make a project route and an actions route.
+- [ ] Reactor using _async/await_ and _try/catch_.
+- [ ] Use Express Routes to make mini-express apps to clean up code. Specifically, make a project route and an actions route.
