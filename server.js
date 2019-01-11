@@ -154,3 +154,20 @@ server.put("/projects/:id", (req, res) => {
     });
   }
 });
+
+// get a specific project's actions
+server.get("/projects/:id/actions", (req, res) => {
+  const { id } = req.params;
+  projectdb
+    .getProjectActions(id) // pass in the id, get those specific actions!
+
+    .then(projActions => {
+      res.status(200).send(projActions);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json("Hey, we are having some issue getting those users");
+    });
+});
+
+/////========= Project Endpoints ==============//////
