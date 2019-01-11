@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+We learned about Middleware and Routers this weeek, both of which were implemented in our projects for the week. The most interesting middleware (imo) was helmet; it seemed like such a small function, but it seems to do a world of good for your app security. Routers was a little less straightfoward for me; it seemed like more of a convinience system to help clean up code clutter.
+
 - [ ] Describe Middleware?
+
+Middleware, like mentioned above, are simply functions that get request and response objects (the homies lol) and operate on them. They then simply return the response object or keep going to the next middleware (with next()). Express' middleware stack seems to be basically comprised of an array of functions. Keeps it simple in my head.
 
 - [ ] Describe a Resource?
 
+A resource is the data that lives in the server we are trying to access, and we use endpoints to use CRUD methods on said resource. It's basically the data we want and need to access with our app, and we do this through our API.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+We can send a 200 Ok status code to communicate to our client that everything was ... a'OK. LOL. All good here, chief!
+
 - [ ] How can we partition our application into sub-applications?
+
+We can use an Express Router, which behaves as a mini Express applicaiton with its own Routing and Middleware (almost like components in React).
 
 ## Project Setup
 
@@ -42,14 +52,14 @@ Follow these steps to set up and work on your project:
 - [*] Add PM as collaborator on Github.
 - [*] Clone your OWN version of Repo (Not Lambda's by mistake!).
 - [*] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [*] Implement the project on this Branch, committing changes regularly.
+- [*] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo). **Please don't merge your own pull request.**
-- [ ] Add your Project Manager as a Reviewer on the Pull-request
-- [ ] PM then will count the HW as done by merging the branch back into master.
+- [*] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo). **Please don't merge your own pull request.**
+- [*] Add your Project Manager as a Reviewer on the Pull-request
+- [*] PM then will count the HW as done by merging the branch back into master.
 
 ## Database Persistence Helpers
 
