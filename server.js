@@ -47,7 +47,7 @@ server.get("/projects", (req, res) => {
     });
 });
 
-// for my next trick, lets get a SPECIFIC endpoint
+// for my next trick, lets get a SPECIFIC project
 
 server.get("/projects/:id", (req, res) => {
   // first, what is an id? lets define it
@@ -170,4 +170,128 @@ server.get("/projects/:id/actions", (req, res) => {
     });
 });
 
-/////========= Project Endpoints ==============//////
+/////========= Action Endpoints ==============//////
+
+// Get ALL Actions - first, lets get all those actions - similar to projects!
+server.get("/actions", (req, res) => {
+  actiondb
+    .get()
+    .then(actions => {
+      res.status(200).send(actions); //send the AOK
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+});
+
+// Getting Specific Action - I guess if we wanted a specific action we can use this endpoint
+server.get("/actions/:id", (req, res) => {
+  // first, what is an id? lets define it
+  const id = req.params.id;
+  //now, let's use the id to find that project
+  actiondb
+    .get(id)
+    .then(action => {
+      // if it exists, send the a'OK and the project!
+      res.status(200).send(action);
+    })
+    .catch(err => {
+      // but if that id doesn't have a project on it, send that error and a 500 code!
+      res.status(500).json({
+        error:
+          "There doesn't seem to be anything here. But I'm here for you. Wait that's awkward. Anyway, get out of here, stalker."
+      });
+    });
+});
+
+// Adding Action - let's add an action to an existing project!
+
+server.post("/actions", (req, res) => {
+  // lets try a little deconstruction
+  const { project_id, description, notes, completed } = req.body;
+
+  if (!project_id || !description || !notes) {
+    res.status(404).json({
+      message:
+        "Hey man, remember to put in the project ID AND a description AND some notes. Completed boolean is optional, but hey, put it in why doncha?"
+    });
+  } else {
+    actiondb
+      .insert({
+        project_id,
+        description,
+        notes,
+        completed
+      })
+      .then(action => {
+        res.status(200).send(action);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
+  }
+});
+
+// Deleting Specific Action - Need to remove an action? Do it here!
+server.delete("/actions/:id", (req, res) => {
+  // first, what is an id? lets define it
+  const id = req.params.id;
+
+  actiondb
+    .get(id)
+    .then(action => {
+      // first, check if the that action exists
+      if (action) {
+        actiondb.remove(id).then(countOfDeleted => {
+          res
+            .status(200)
+            .json({ countOfDeleted, message: "Great job, action removed!" });
+        });
+      } else {
+        res.status(404).json({
+          message:
+            "Yo, check yoself befo' u wrek urself - That action doesn't exist."
+        });
+      }
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "Not sure m8, but something went wrong. Try again?" });
+    });
+});
+
+// Modifying an Action - Let's use that put request to good use.
+
+// finally, lets get the ability to modify an action attached to a project!
+server.put("/actions/:id", (req, res) => {
+  // we need an id, of course
+  const { id } = req.params;
+  // make sure they have a project_id, description, notes, and if they want to, a completed bool
+  const { project_id, description, notes, completed } = req.body;
+
+  if (!project_id || !description || !notes) {
+    res.status(404).json({
+      message:
+        "Hey man, remember to put in the project ID AND a description AND some notes. Completed boolean is optional, but hey, put it in why doncha?"
+    });
+  } else {
+    actiondb.get(id).then(action => {
+      if (action) {
+        actiondb
+          .update(id, req.body)
+          .then(response =>
+            res
+              .status(200)
+              .json({ response, message: "yo, i think we good son!" })
+          )
+          .catch(err => res.status(500).json(err));
+      } else {
+        res.status(404).json({
+          message: "The action with the specified ID does not exist. Try again?"
+        });
+      }
+    });
+  }
+});
