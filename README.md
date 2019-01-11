@@ -85,7 +85,7 @@ The `projectModel.js` helper includes an extra method called `getProjectActions(
 
 Design and build the necessary endpoints to:
 
-- [ ] Perform CRUD operations on _projects_ and _actions_.
+- [*] Perform CRUD operations on _projects_ and _actions_.
 - [*] Retrieve the list of actions for a project.
 
 ## Database Schemas
@@ -117,3 +117,8 @@ Now that we have a way to add, update, remove and retrieve data from the provide
 - From the React application show a list of all _projects_ using the API you built.
 - Add functionality to show the details of a project, including its actions, when clicking a project name in the list. Use React Router to navigate to a separate route to show the project details.
 - Add styling! Perhaps with [`styled-components`](https://www.styled-components.com/).
+
+- Extra Stretch for Reactoring:
+
+- [] Reactor using _async/await_ and _try/catch_.
+- [] Use Express Routes to make mini-express apps to clean up code. Specifically, make a project route and an actions route.
