@@ -17,7 +17,6 @@ class App extends Component {
       .then(response => {
         console.log(response);
         console.log(response.data);
-        console.log(response.data.projects);
         // what is the data called?
         this.setState({ projects: response.data });
       })
@@ -30,9 +29,9 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>Lol i'm rotating</p>
-          {this.state.projects.map(project => (
-            <div>
-              <h2 key={project.id}>{project.name}</h2>
+          {this.state.projects.map((project, index) => (
+            <div key={project.id}>
+              <h2>{project.name}</h2>
             </div>
           ))}
         </header>
