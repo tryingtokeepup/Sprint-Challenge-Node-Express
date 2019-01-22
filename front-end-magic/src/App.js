@@ -7,7 +7,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      projects: []
+      projects: [],
+      seconds: 20
     };
   }
 
@@ -27,7 +28,15 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img
+            style={{
+              animation: `App-logo-spin infinite ${this.state.seconds}s linear`
+            }}
+            src={logo}
+            onClick={() => this.setState({ seconds: this.state.seconds / 2 })}
+            className="App-logo"
+            alt="logo"
+          />
           <p>Lol i'm rotating</p>
           {this.state.projects.map((project, index) => (
             <div key={project.id}>
