@@ -34,6 +34,9 @@ class App extends Component {
             }}
             src={logo}
             onClick={() => this.setState({ seconds: this.state.seconds / 2 })}
+            onTouchStart={() => {
+              this.setState({ seconds: this.state.seconds / 2 });
+            }}
             className="App-logo"
             alt="logo"
           />
