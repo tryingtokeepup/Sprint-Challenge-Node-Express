@@ -32,12 +32,9 @@ class App extends Component {
             style={{
               animation: `App-logo-spin infinite ${this.state.seconds}s linear`
             }}
+            className="App-logo"
             src={logo}
             onClick={() => this.setState({ seconds: this.state.seconds / 2 })}
-            onTouchStart={() => {
-              this.setState({ seconds: this.state.seconds / 2 });
-            }}
-            className="App-logo"
             alt="logo"
           />
           <p>Lol i'm rotating</p>
