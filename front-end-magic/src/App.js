@@ -30,6 +30,7 @@ class App extends Component {
         <header className="App-header">
           <img
             style={{
+              cursor: "pointer",
               animation: `App-logo-spin infinite ${this.state.seconds}s linear`
             }}
             className="App-logo"
